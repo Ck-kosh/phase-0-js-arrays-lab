@@ -1,50 +1,37 @@
 // Write your code here
-// Step 1: Create the products array
+// محصولات array
 let products = ["Laptop", "Phone", "Headphones", "Monitor"];
 
-// Step 2: Function to log the first product
+// Log only the first product (NO extra text)
 function logFirstProduct() {
-    if (products.length === 0) {
-        console.log("No products available.");
-        return;
-    }
-
-    console.log("First product:", products[0]);
+    console.log(products[0]);
 }
 
-// Step 3: Function to add a new product
+// Add product (no extra console text unless required)
 function addProduct(productName) {
     products.push(productName);
-    console.log(`${productName} added to inventory.`);
 }
 
-// Step 4: Function to update a product name
+// Update product name by index
 function updateProductName(index, newName) {
-    if (index < 0 || index >= products.length) {
-        console.log("Invalid product index.");
-        return;
+    if (index >= 0 && index < products.length) {
+        products[index] = newName;
     }
-
-    console.log(`Updated ${products[index]} to ${newName}.`);
-    products[index] = newName;
 }
 
-// Step 5: Function to remove the last product
+// Remove last product
 function removeLastProduct() {
-    if (products.length === 0) {
-        console.log("No products to remove.");
-        return;
-    }
-
-    const removed = products.pop();
-    console.log(`${removed} removed from inventory.`);
+    products.pop();
 }
 
-// Optional: Function to display all products
-function displayProducts() {
-    console.log("Current Inventory:", products);
-}
-
+// Export (IMPORTANT for Jest tests)
+module.exports = {
+    products,
+    logFirstProduct,
+    addProduct,
+    updateProductName,
+    removeLastProduct
+};
 
 // Export the necessary parts for testing
 module.exports = {
